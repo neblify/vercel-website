@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Neblify Brand Colors */
+    --background: 0 0% 100%;
+    --foreground: 216 87% 35%;
+    --card: 0 0% 100%;
+    --card-foreground: 216 87% 35%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 216 87% 35%;
+    --primary: 207 81% 51%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 216 87% 35%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 216 20% 45%;
+    --accent: 42 98% 54%;
+    --accent-foreground: 216 87% 35%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 207 81% 51%;
+    --radius: 0.5rem;
+    --chart-1: 207 81% 51%;
+    --chart-2: 216 87% 35%;
+    --chart-3: 42 98% 54%;
+    --chart-4: 197 37% 24%;
+    --chart-5: 173 58% 39%;
+  }
+
+  .dark {
+    --background: 216 87% 8%;
+    --foreground: 210 40% 98%;
+    --card: 216 87% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 216 87% 12%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 207 81% 51%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 216 87% 20%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 216 50% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 42 98% 54%;
+    --accent-foreground: 216 87% 8%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 216 50% 20%;
+    --input: 216 50% 20%;
+    --ring: 207 81% 51%;
+    --chart-1: 207 81% 51%;
+    --chart-2: 42 98% 54%;
+    --chart-3: 216 87% 35%;
+    --chart-4: 197 37% 44%;
+    --chart-5: 173 58% 49%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
