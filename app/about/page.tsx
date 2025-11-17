@@ -10,7 +10,7 @@ const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
   transition: { duration: 0.5 },
-  viewport: { once: true }
+  viewport: { once: true, amount: 0.1, margin: "200px" }
 };
 
 export default function AboutPage() {
@@ -118,7 +118,7 @@ export default function AboutPage() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.1, margin: "200px" }}
                   >
                     <Card>
                       <CardHeader>
@@ -154,7 +154,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.1, margin: "200px" }}
               >
                 <Card>
                   <CardHeader>
@@ -211,7 +211,7 @@ export default function AboutPage() {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1, margin: "200px" }}
                   className="flex gap-8"
                 >
                   <div className="flex-shrink-0">

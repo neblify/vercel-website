@@ -168,7 +168,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1, margin: "200px" }}
                 >
                   <Link href={service.href}>
                     <Card className="h-full transition-all hover:shadow-lg hover:border-primary/50 cursor-pointer">
@@ -212,7 +212,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1, margin: "200px" }}
                   className="text-center"
                 >
                   <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">

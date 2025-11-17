@@ -82,7 +82,7 @@ export default function SolutionsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1, margin: "200px" }}
                 >
                   <Card className="h-full">
                     <CardHeader>
