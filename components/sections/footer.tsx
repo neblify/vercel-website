@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
 
 export function Footer() {
   const navigation = {
@@ -155,20 +155,36 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Neblify Solution Pvt. Ltd. All rights reserved.
           </p>
-          <div className="flex space-x-6">
-            {/* Add social media links when provided */}
-            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              LinkedIn
-            </Link>
-            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              X (Twitter)
-            </Link>
-            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Instagram
-            </Link>
-            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Facebook
-            </Link>
+          <div className="flex items-center space-x-4">
+            {/* Social media links - update hrefs when accounts are created */}
+            <span
+              className="p-2 rounded-full text-muted-foreground/40 border border-dashed border-muted-foreground/20 cursor-not-allowed"
+              title="LinkedIn - Coming soon"
+              aria-label="LinkedIn - Coming soon"
+            >
+              <Linkedin className="h-4 w-4" />
+            </span>
+            <span
+              className="p-2 rounded-full text-muted-foreground/40 border border-dashed border-muted-foreground/20 cursor-not-allowed"
+              title="X (Twitter) - Coming soon"
+              aria-label="X (Twitter) - Coming soon"
+            >
+              <Twitter className="h-4 w-4" />
+            </span>
+            <span
+              className="p-2 rounded-full text-muted-foreground/40 border border-dashed border-muted-foreground/20 cursor-not-allowed"
+              title="Instagram - Coming soon"
+              aria-label="Instagram - Coming soon"
+            >
+              <Instagram className="h-4 w-4" />
+            </span>
+            <span
+              className="p-2 rounded-full text-muted-foreground/40 border border-dashed border-muted-foreground/20 cursor-not-allowed"
+              title="Facebook - Coming soon"
+              aria-label="Facebook - Coming soon"
+            >
+              <Facebook className="h-4 w-4" />
+            </span>
           </div>
         </div>
       </div>

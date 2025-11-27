@@ -1,12 +1,23 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/sections/header';
 import { Footer } from '@/components/sections/footer';
 import { GoogleAnalytics } from '@/components/analytics/google-analytics';
 import { GoogleTagManager } from '@/components/analytics/google-tag-manager';
+import { SmoothScrollProvider } from '@/components/providers/smooth-scroll-provider';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-inter',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-playfair',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -52,12 +63,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         <GoogleTagManager />
         <GoogleAnalytics />
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <SmoothScrollProvider>
+          <Header />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Mail, Phone, MapPin, Loader2 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations';
 import { contactFormSchema, type ContactFormData } from '@/lib/validations/contact';
 import { submitContactForm } from '@/app/actions/contact';
 
@@ -83,185 +83,187 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-primary/10 via-background to-background">
+      <section className="section-spacing bg-gradient-to-br from-primary/5 via-background to-background">
         <div className="container">
-          <motion.div
-            className="max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Get in Touch</h1>
-            <p className="text-xl text-muted-foreground">
-              Let's discuss how Neblify can help transform your business with AI and cloud solutions.
-            </p>
-          </motion.div>
+          <div className="max-w-3xl mx-auto text-center">
+            <Reveal>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">Get in Touch</h1>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-xl text-muted-foreground font-light">
+                Let's discuss how Neblify can help transform your business with AI and cloud solutions.
+              </p>
+            </Reveal>
+          </div>
         </div>
       </section>
 
       {/* Contact Form and Info */}
-      <section className="py-20">
+      <section className="section-spacing">
         <div className="container">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Information */}
             <div className="space-y-6">
-              <div>
-                <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-                <p className="text-muted-foreground mb-8">
-                  Reach out to us through any of these channels, or use the contact form.
-                </p>
-              </div>
+              <Reveal>
+                <div>
+                  <h2 className="text-2xl mb-6">Contact Information</h2>
+                  <p className="text-muted-foreground mb-8 font-light">
+                    Reach out to us through any of these channels, or use the contact form.
+                  </p>
+                </div>
+              </Reveal>
 
-              {contactInfo.map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card>
-                      <CardHeader>
-                        <div className="flex items-center space-x-3">
-                          <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                            <Icon className="h-5 w-5 text-primary" />
+              <StaggerContainer className="space-y-6">
+                {contactInfo.map((item, index) => {
+                  const Icon = item.icon;
+                  return (
+                    <StaggerItem key={index}>
+                      <Card>
+                        <CardHeader>
+                          <div className="flex items-center space-x-3">
+                            <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                              <Icon className="h-5 w-5 text-primary" />
+                            </div>
+                            <CardTitle className="text-lg font-medium">{item.title}</CardTitle>
                           </div>
-                          <CardTitle className="text-lg">{item.title}</CardTitle>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        {item.details.map((detail, i) => (
-                          <p key={i} className="text-sm text-muted-foreground">
-                            {detail}
-                          </p>
-                        ))}
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                );
-              })}
+                        </CardHeader>
+                        <CardContent>
+                          {item.details.map((detail, i) => (
+                            <p key={i} className="text-sm text-muted-foreground font-light">
+                              {detail}
+                            </p>
+                          ))}
+                        </CardContent>
+                      </Card>
+                    </StaggerItem>
+                  );
+                })}
+              </StaggerContainer>
             </div>
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Send us a Message</CardTitle>
-                  <CardDescription>
-                    Fill out the form below and we'll get back to you as soon as possible.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
+              <Reveal delay={0.2}>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-2xl font-medium">Send us a Message</CardTitle>
+                    <CardDescription className="font-light">
+                      Fill out the form below and we'll get back to you as soon as possible.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="name">
+                            Name <span className="text-destructive">*</span>
+                          </Label>
+                          <Input id="name" {...register('name')} placeholder="John Doe" />
+                          {errors.name && (
+                            <p className="text-sm text-destructive">{errors.name.message}</p>
+                          )}
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="email">
+                            Email <span className="text-destructive">*</span>
+                          </Label>
+                          <Input
+                            id="email"
+                            type="email"
+                            {...register('email')}
+                            placeholder="john@example.com"
+                          />
+                          {errors.email && (
+                            <p className="text-sm text-destructive">{errors.email.message}</p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="phone">Phone</Label>
+                          <Input id="phone" {...register('phone')} placeholder="+91 9876543210" />
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="company">Company</Label>
+                          <Input id="company" {...register('company')} placeholder="Acme Inc." />
+                        </div>
+                      </div>
+
                       <div className="space-y-2">
-                        <Label htmlFor="name">
-                          Name <span className="text-destructive">*</span>
+                        <Label htmlFor="inquiryType">
+                          Inquiry Type <span className="text-destructive">*</span>
                         </Label>
-                        <Input id="name" {...register('name')} placeholder="John Doe" />
-                        {errors.name && (
-                          <p className="text-sm text-destructive">{errors.name.message}</p>
+                        <Select onValueChange={(value) => setValue('inquiryType', value as 'customer' | 'partner')}>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select inquiry type" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="customer">Customer Inquiry</SelectItem>
+                            <SelectItem value="partner">Partner Inquiry</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        {errors.inquiryType && (
+                          <p className="text-sm text-destructive">{errors.inquiryType.message}</p>
                         )}
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="email">
-                          Email <span className="text-destructive">*</span>
+                        <Label htmlFor="message">
+                          Message <span className="text-destructive">*</span>
                         </Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          {...register('email')}
-                          placeholder="john@example.com"
+                        <Textarea
+                          id="message"
+                          {...register('message')}
+                          placeholder="Tell us about your project or inquiry..."
+                          rows={6}
                         />
-                        {errors.email && (
-                          <p className="text-sm text-destructive">{errors.email.message}</p>
+                        {errors.message && (
+                          <p className="text-sm text-destructive">{errors.message.message}</p>
                         )}
                       </div>
-                    </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="phone">Phone</Label>
-                        <Input id="phone" {...register('phone')} placeholder="+91 9876543210" />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="company">Company</Label>
-                        <Input id="company" {...register('company')} placeholder="Acme Inc." />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="inquiryType">
-                        Inquiry Type <span className="text-destructive">*</span>
-                      </Label>
-                      <Select onValueChange={(value) => setValue('inquiryType', value as 'customer' | 'partner')}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select inquiry type" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="customer">Customer Inquiry</SelectItem>
-                          <SelectItem value="partner">Partner Inquiry</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      {errors.inquiryType && (
-                        <p className="text-sm text-destructive">{errors.inquiryType.message}</p>
+                      {submitStatus && (
+                        <div
+                          className={`p-4 rounded-xl ${
+                            submitStatus.type === 'success'
+                              ? 'bg-green-50 text-green-800 border border-green-200'
+                              : 'bg-red-50 text-red-800 border border-red-200'
+                          }`}
+                        >
+                          {submitStatus.message}
+                        </div>
                       )}
-                    </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="message">
-                        Message <span className="text-destructive">*</span>
-                      </Label>
-                      <Textarea
-                        id="message"
-                        {...register('message')}
-                        placeholder="Tell us about your project or inquiry..."
-                        rows={6}
-                      />
-                      {errors.message && (
-                        <p className="text-sm text-destructive">{errors.message.message}</p>
-                      )}
-                    </div>
-
-                    {submitStatus && (
-                      <div
-                        className={`p-4 rounded-md ${
-                          submitStatus.type === 'success'
-                            ? 'bg-green-50 text-green-800 border border-green-200'
-                            : 'bg-red-50 text-red-800 border border-red-200'
-                        }`}
-                      >
-                        {submitStatus.message}
-                      </div>
-                    )}
-
-                    <Button type="submit" size="lg" disabled={isSubmitting} className="w-full md:w-auto">
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Sending...
-                        </>
-                      ) : (
-                        'Send Message'
-                      )}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+                      <Button type="submit" size="lg" disabled={isSubmitting} className="w-full md:w-auto">
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Sending...
+                          </>
+                        ) : (
+                          'Send Message'
+                        )}
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
+              </Reveal>
             </div>
           </div>
         </div>
       </section>
 
       {/* Map Section - Placeholder */}
-      <section className="py-20 bg-muted/50">
+      <section className="section-spacing bg-muted/30">
         <div className="container">
-          <div className="aspect-video rounded-lg bg-muted flex items-center justify-center">
-            <p className="text-muted-foreground">Map integration placeholder - Add Google Maps embed here</p>
-          </div>
+          <Reveal>
+            <div className="aspect-video rounded-xl bg-muted/50 border border-dashed border-muted-foreground/20 flex items-center justify-center">
+              <p className="text-muted-foreground/50 font-light">Google Maps integration coming soon</p>
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>

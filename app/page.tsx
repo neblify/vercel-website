@@ -4,21 +4,9 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Bot, Cloud, Code, Cpu, LineChart, Shield, Sparkles, TrendingUp, Zap } from 'lucide-react';
-import { motion } from 'framer-motion';
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
+import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations';
+import { PartnerLogos } from '@/components/sections/partner-logos';
+import { ClientLogos } from '@/components/sections/client-logos';
 
 export default function Home() {
   const services = [
@@ -88,96 +76,90 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
+      <section className="relative section-spacing overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
         <div className="container relative z-10">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp} className="inline-flex items-center px-4 py-2 rounded-full border bg-background/50 backdrop-blur-sm mb-6">
-              <Sparkles className="h-4 w-4 mr-2 text-primary" />
-              <span className="text-sm font-medium">Transform Your Business with AI</span>
-            </motion.div>
+          <div className="max-w-4xl mx-auto text-center">
+            <Reveal>
+              <div className="inline-flex items-center px-4 py-2 rounded-full border border-border/50 bg-background/50 backdrop-blur-sm mb-8">
+                <Sparkles className="h-4 w-4 mr-2 text-primary" />
+                <span className="text-sm font-medium">Transform Your Business with AI</span>
+              </div>
+            </Reveal>
 
-            <motion.h1
-              variants={fadeInUp}
-              className="text-4xl md:text-6xl font-bold tracking-tight mb-6"
-            >
-              AI & Cloud Solutions That
-              <span className="text-primary"> Drive Results</span>
-            </motion.h1>
+            <Reveal delay={0.1}>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
+                AI & Cloud Solutions That
+                <span className="text-primary"> Drive Results</span>
+              </h1>
+            </Reveal>
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
-            >
-              Neblify delivers cutting-edge AI, Machine Learning, Generative AI, DevOps, and Cloud cost optimization services to help your business thrive in the digital age.
-            </motion.p>
+            <Reveal delay={0.2}>
+              <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto font-light">
+                Neblify delivers cutting-edge AI, Machine Learning, Generative AI, DevOps, and Cloud cost optimization services to help your business thrive in the digital age.
+              </p>
+            </Reveal>
 
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <Link href="/contact">
-                <Button size="lg" className="w-full sm:w-auto">
-                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="/solutions">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                  Explore Solutions
-                </Button>
-              </Link>
-            </motion.div>
+            <Reveal delay={0.3}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/contact">
+                  <Button size="lg" className="w-full sm:w-auto">
+                    Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/solutions">
+                  <Button size="lg" variant="ghostPrimary" className="w-full sm:w-auto">
+                    Explore Solutions
+                  </Button>
+                </Link>
+              </div>
+            </Reveal>
 
             {/* Stats */}
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
-            >
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
+            <Reveal delay={0.4}>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20">
+                {stats.map((stat, index) => (
+                  <div key={index} className="text-center">
+                    <div className="text-3xl md:text-4xl font-serif text-primary mb-2">{stat.value}</div>
+                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
+      {/* Partner Logos */}
+      <PartnerLogos />
+
       {/* Services Section */}
-      <section className="py-20 bg-muted/50">
+      <section className="section-spacing bg-muted/30">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Solutions</h2>
-            <p className="text-lg text-muted-foreground">
-              Comprehensive AI and cloud services designed to accelerate your digital transformation journey.
-            </p>
+            <Reveal>
+              <h2 className="text-3xl md:text-4xl mb-4">Our Solutions</h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-lg text-muted-foreground font-light">
+                Comprehensive AI and cloud services designed to accelerate your digital transformation journey.
+              </p>
+            </Reveal>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true, amount: 0.1, margin: "200px" }}
-                >
+                <StaggerItem key={index}>
                   <Link href={service.href}>
-                    <Card className="h-full transition-all hover:shadow-lg hover:border-primary/50 cursor-pointer">
+                    <Card className="h-full cursor-pointer">
                       <CardHeader>
-                        <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                        <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                           <Icon className="h-6 w-6 text-primary" />
                         </div>
-                        <CardTitle className="text-xl">{service.title}</CardTitle>
-                        <CardDescription>{service.description}</CardDescription>
+                        <CardTitle className="text-xl font-medium">{service.title}</CardTitle>
+                        <CardDescription className="font-light">{service.description}</CardDescription>
                       </CardHeader>
                       <CardContent>
                         <div className="flex items-center text-sm text-primary font-medium">
@@ -186,69 +168,75 @@ export default function Home() {
                       </CardContent>
                     </Card>
                   </Link>
-                </motion.div>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
+      {/* Client Logos */}
+      <ClientLogos />
+
       {/* Why Choose Us Section */}
-      <section className="py-20">
+      <section className="section-spacing">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Neblify?</h2>
-            <p className="text-lg text-muted-foreground">
-              We combine deep technical expertise with a proven track record of delivering results.
-            </p>
+            <Reveal>
+              <h2 className="text-3xl md:text-4xl mb-4">Why Choose Neblify?</h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-lg text-muted-foreground font-light">
+                We combine deep technical expertise with a proven track record of delivering results.
+              </p>
+            </Reveal>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <StaggerContainer className="grid md:grid-cols-3 gap-12">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true, amount: 0.1, margin: "200px" }}
-                  className="text-center"
-                >
+                <StaggerItem key={index} className="text-center">
                   <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
                     <Icon className="h-8 w-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </motion.div>
+                  <h3 className="text-xl font-medium mb-3">{feature.title}</h3>
+                  <p className="text-muted-foreground font-light">{feature.description}</p>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section className="section-spacing bg-primary text-primary-foreground">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-lg mb-8 opacity-90">
-              Let's discuss how our AI and cloud solutions can help you achieve your business goals.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
-                <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                  Contact Us Today
-                </Button>
-              </Link>
-              <Link href="/case-studies">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                  View Case Studies
-                </Button>
-              </Link>
-            </div>
+            <Reveal>
+              <h2 className="text-3xl md:text-4xl mb-6">
+                Ready to Transform Your Business?
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-lg mb-10 opacity-90 font-light">
+                Let's discuss how our AI and cloud solutions can help you achieve your business goals.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/contact">
+                  <Button size="lg" variant="secondary" className="w-full sm:w-auto">
+                    Contact Us Today
+                  </Button>
+                </Link>
+                <Link href="/case-studies">
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                    View Case Studies
+                  </Button>
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

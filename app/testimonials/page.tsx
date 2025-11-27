@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Star } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations';
 
 export default function TestimonialsPage() {
   const testimonials = [
@@ -53,35 +53,29 @@ export default function TestimonialsPage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-primary/10 via-background to-background">
+      <section className="section-spacing bg-gradient-to-br from-primary/5 via-background to-background">
         <div className="container">
-          <motion.div
-            className="max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-              Client Testimonials
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              Hear what our clients have to say about working with Neblify.
-            </p>
-          </motion.div>
+          <div className="max-w-3xl mx-auto text-center">
+            <Reveal>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
+                Client Testimonials
+              </h1>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-xl text-muted-foreground font-light">
+                Hear what our clients have to say about working with Neblify.
+              </p>
+            </Reveal>
+          </div>
         </div>
       </section>
 
       {/* Testimonials Grid */}
-      <section className="py-20">
+      <section className="section-spacing">
         <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
+              <StaggerItem key={index}>
                 <Card className="h-full">
                   <CardHeader>
                     <div className="flex gap-1 mb-4">
@@ -89,19 +83,19 @@ export default function TestimonialsPage() {
                         <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                       ))}
                     </div>
-                    <p className="text-muted-foreground italic">"{testimonial.content}"</p>
+                    <p className="text-muted-foreground font-light italic leading-relaxed">"{testimonial.content}"</p>
                   </CardHeader>
                   <CardContent>
                     <div className="border-t pt-4">
-                      <p className="font-semibold">{testimonial.name}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.company}</p>
+                      <p className="font-medium">{testimonial.name}</p>
+                      <p className="text-sm text-muted-foreground font-light">{testimonial.role}</p>
+                      <p className="text-sm text-primary font-light">{testimonial.company}</p>
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
     </div>

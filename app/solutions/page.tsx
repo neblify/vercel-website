@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Sparkles, Bot, Code, Cpu, TrendingUp, Cloud, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations';
 
 export default function SolutionsPage() {
   const solutions = [
@@ -55,86 +55,86 @@ export default function SolutionsPage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-primary/10 via-background to-background">
+      <section className="section-spacing bg-gradient-to-br from-primary/5 via-background to-background">
         <div className="container">
-          <motion.div
-            className="max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Our Solutions</h1>
-            <p className="text-xl text-muted-foreground">
-              Comprehensive AI and cloud services designed to accelerate your digital transformation journey.
-            </p>
-          </motion.div>
+          <div className="max-w-3xl mx-auto text-center">
+            <Reveal>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">Our Solutions</h1>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-xl text-muted-foreground font-light">
+                Comprehensive AI and cloud services designed to accelerate your digital transformation journey.
+              </p>
+            </Reveal>
+          </div>
         </div>
       </section>
 
       {/* Solutions Grid */}
-      <section className="py-20">
+      <section className="section-spacing">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-8">
+          <StaggerContainer className="grid md:grid-cols-2 gap-8">
             {solutions.map((solution, index) => {
               const Icon = solution.icon;
               return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true, amount: 0.1, margin: "200px" }}
-                >
+                <StaggerItem key={index}>
                   <Card className="h-full">
                     <CardHeader>
-                      <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                         <Icon className="h-6 w-6 text-primary" />
                       </div>
-                      <CardTitle className="text-2xl mb-2">{solution.title}</CardTitle>
-                      <CardDescription className="text-base">{solution.description}</CardDescription>
+                      <CardTitle className="text-2xl mb-2 font-medium">{solution.title}</CardTitle>
+                      <CardDescription className="text-base font-light">{solution.description}</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-4">
                         <div>
-                          <h4 className="font-semibold mb-3">Key Features:</h4>
+                          <h4 className="font-medium mb-3">Key Features:</h4>
                           <ul className="space-y-2">
                             {solution.features.map((feature, i) => (
                               <li key={i} className="flex items-start">
                                 <div className="h-1.5 w-1.5 rounded-full bg-primary mt-2 mr-3 flex-shrink-0" />
-                                <span className="text-sm text-muted-foreground">{feature}</span>
+                                <span className="text-sm text-muted-foreground font-light">{feature}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
                         <Link href={solution.href}>
-                          <Button variant="outline" className="w-full">
+                          <Button variant="ghostPrimary" className="w-full">
                             Learn More <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>
                         </Link>
                       </div>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section className="section-spacing bg-primary text-primary-foreground">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Get Started?
-            </h2>
-            <p className="text-lg mb-8 opacity-90">
-              Let's discuss which solution is right for your business.
-            </p>
-            <Link href="/contact">
-              <Button size="lg" variant="secondary">
-                Contact Our Team
-              </Button>
-            </Link>
+            <Reveal>
+              <h2 className="text-3xl md:text-4xl mb-6">
+                Ready to Get Started?
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-lg mb-10 opacity-90 font-light">
+                Let's discuss which solution is right for your business.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <Link href="/contact">
+                <Button size="lg" variant="secondary">
+                  Contact Our Team
+                </Button>
+              </Link>
+            </Reveal>
           </div>
         </div>
       </section>
