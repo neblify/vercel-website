@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Sparkles, Bot, Code, Cpu, TrendingUp, Cloud, ArrowRight } from 'lucide-react';
 import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations';
+import { HeroBackground, SectionBackground, SectionDivider, GradientBlob } from '@/components/decorations';
 
 export default function SolutionsPage() {
   const solutions = [
@@ -55,8 +56,8 @@ export default function SolutionsPage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="section-spacing bg-gradient-to-br from-primary/5 via-background to-background">
-        <div className="container">
+      <HeroBackground variant="solutions" className="section-spacing overflow-hidden">
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <Reveal>
               <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">Our Solutions</h1>
@@ -68,10 +69,13 @@ export default function SolutionsPage() {
             </Reveal>
           </div>
         </div>
-      </section>
+      </HeroBackground>
+
+      {/* Section Divider */}
+      <SectionDivider variant="circuit" colorScheme="primary" />
 
       {/* Solutions Grid */}
-      <section className="section-spacing">
+      <SectionBackground variant="light" className="section-spacing">
         <div className="container">
           <StaggerContainer className="grid md:grid-cols-2 gap-8">
             {solutions.map((solution, index) => {
@@ -112,11 +116,16 @@ export default function SolutionsPage() {
             })}
           </StaggerContainer>
         </div>
-      </section>
+      </SectionBackground>
 
       {/* CTA */}
-      <section className="section-spacing bg-primary text-primary-foreground">
-        <div className="container">
+      <section className="relative section-spacing bg-primary text-primary-foreground overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 -z-0 overflow-hidden opacity-20">
+          <GradientBlob variant="large" position="top-left" colorScheme="secondary" />
+          <GradientBlob variant="medium" position="bottom-right" colorScheme="accent" />
+        </div>
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <Reveal>
               <h2 className="text-3xl md:text-4xl mb-6">

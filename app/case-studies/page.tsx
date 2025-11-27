@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations';
+import { HeroBackground, SectionDivider, GradientBlob } from '@/components/decorations';
 
 export default function CaseStudiesPage() {
   const caseStudies = [
@@ -40,8 +41,8 @@ export default function CaseStudiesPage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="section-spacing bg-gradient-to-br from-primary/5 via-background to-background">
-        <div className="container">
+      <HeroBackground variant="default" className="section-spacing overflow-hidden">
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <Reveal>
               <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
@@ -55,7 +56,10 @@ export default function CaseStudiesPage() {
             </Reveal>
           </div>
         </div>
-      </section>
+      </HeroBackground>
+
+      {/* Section Divider */}
+      <SectionDivider variant="circuit" colorScheme="primary" />
 
       {/* Case Studies */}
       <section className="section-spacing">
@@ -111,8 +115,13 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-spacing bg-primary text-primary-foreground">
-        <div className="container">
+      <section className="relative section-spacing bg-primary text-primary-foreground overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 -z-0 overflow-hidden opacity-20">
+          <GradientBlob variant="large" position="top-left" colorScheme="secondary" />
+          <GradientBlob variant="medium" position="bottom-right" colorScheme="accent" />
+        </div>
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <Reveal>
               <h2 className="text-3xl md:text-4xl mb-6">

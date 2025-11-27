@@ -13,6 +13,7 @@ import { Mail, Phone, MapPin, Loader2 } from 'lucide-react';
 import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations';
 import { contactFormSchema, type ContactFormData } from '@/lib/validations/contact';
 import { submitContactForm } from '@/app/actions/contact';
+import { HeroBackground, SectionDivider } from '@/components/decorations';
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -83,8 +84,8 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="section-spacing bg-gradient-to-br from-primary/5 via-background to-background">
-        <div className="container">
+      <HeroBackground variant="contact" className="section-spacing overflow-hidden">
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <Reveal>
               <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">Get in Touch</h1>
@@ -96,7 +97,10 @@ export default function ContactPage() {
             </Reveal>
           </div>
         </div>
-      </section>
+      </HeroBackground>
+
+      {/* Section Divider */}
+      <SectionDivider variant="wave" colorScheme="primary" />
 
       {/* Contact Form and Info */}
       <section className="section-spacing">

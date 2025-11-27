@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Star } from 'lucide-react';
 import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations';
+import { HeroBackground, SectionDivider } from '@/components/decorations';
 
 export default function TestimonialsPage() {
   const testimonials = [
@@ -53,8 +54,8 @@ export default function TestimonialsPage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="section-spacing bg-gradient-to-br from-primary/5 via-background to-background">
-        <div className="container">
+      <HeroBackground variant="about" className="section-spacing overflow-hidden">
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <Reveal>
               <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
@@ -68,7 +69,10 @@ export default function TestimonialsPage() {
             </Reveal>
           </div>
         </div>
-      </section>
+      </HeroBackground>
+
+      {/* Section Divider */}
+      <SectionDivider variant="dots" colorScheme="primary" />
 
       {/* Testimonials Grid */}
       <section className="section-spacing">

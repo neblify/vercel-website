@@ -7,6 +7,7 @@ import { ArrowRight, Bot, Cloud, Code, Cpu, LineChart, Shield, Sparkles, Trendin
 import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations';
 import { PartnerLogos } from '@/components/sections/partner-logos';
 import { ClientLogos } from '@/components/sections/client-logos';
+import { HeroBackground, SectionBackground, SectionDivider, GradientBlob } from '@/components/decorations';
 
 export default function Home() {
   const services = [
@@ -76,8 +77,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative section-spacing overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
+      <HeroBackground variant="home" className="section-spacing overflow-hidden">
         <div className="container relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Reveal>
@@ -128,13 +128,16 @@ export default function Home() {
             </Reveal>
           </div>
         </div>
-      </section>
+      </HeroBackground>
 
       {/* Partner Logos */}
       <PartnerLogos />
 
+      {/* Section Divider */}
+      <SectionDivider variant="circuit" colorScheme="primary" />
+
       {/* Services Section */}
-      <section className="section-spacing bg-muted/30">
+      <SectionBackground variant="tech" className="section-spacing bg-muted/30">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Reveal>
@@ -173,13 +176,16 @@ export default function Home() {
             })}
           </StaggerContainer>
         </div>
-      </section>
+      </SectionBackground>
 
       {/* Client Logos */}
       <ClientLogos />
 
+      {/* Section Divider */}
+      <SectionDivider variant="dots" colorScheme="primary" />
+
       {/* Why Choose Us Section */}
-      <section className="section-spacing">
+      <SectionBackground variant="light" className="section-spacing">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Reveal>
@@ -207,11 +213,16 @@ export default function Home() {
             })}
           </StaggerContainer>
         </div>
-      </section>
+      </SectionBackground>
 
       {/* CTA Section */}
-      <section className="section-spacing bg-primary text-primary-foreground">
-        <div className="container">
+      <section className="relative section-spacing bg-primary text-primary-foreground overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 -z-0 overflow-hidden opacity-20">
+          <GradientBlob variant="large" position="top-left" colorScheme="secondary" />
+          <GradientBlob variant="medium" position="bottom-right" colorScheme="accent" />
+        </div>
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <Reveal>
               <h2 className="text-3xl md:text-4xl mb-6">

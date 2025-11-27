@@ -6,6 +6,7 @@ import { Target, Users, Clock, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations';
 import { AvatarPlaceholder } from '@/components/ui/avatar-placeholder';
+import { HeroBackground, SectionBackground, SectionDivider, GradientBlob } from '@/components/decorations';
 
 export default function AboutPage() {
   const values = [
@@ -73,8 +74,8 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="section-spacing bg-gradient-to-br from-primary/5 via-background to-background">
-        <div className="container">
+      <HeroBackground variant="about" className="section-spacing overflow-hidden">
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <Reveal>
               <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
@@ -89,7 +90,7 @@ export default function AboutPage() {
             </Reveal>
           </div>
         </div>
-      </section>
+      </HeroBackground>
 
       {/* Mission & Vision */}
       <section id="mission" className="section-spacing">
@@ -159,8 +160,11 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Section Divider */}
+      <SectionDivider variant="wave" colorScheme="primary" />
+
       {/* Leadership Team */}
-      <section id="leadership" className="section-spacing bg-muted/30">
+      <SectionBackground variant="tech" className="section-spacing bg-muted/30">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <Reveal>
@@ -192,7 +196,10 @@ export default function AboutPage() {
             ))}
           </StaggerContainer>
         </div>
-      </section>
+      </SectionBackground>
+
+      {/* Section Divider */}
+      <SectionDivider variant="dots" colorScheme="primary" />
 
       {/* Company History */}
       <section id="history" className="section-spacing">
@@ -231,8 +238,13 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-spacing bg-primary text-primary-foreground">
-        <div className="container">
+      <section className="relative section-spacing bg-primary text-primary-foreground overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 -z-0 overflow-hidden opacity-20">
+          <GradientBlob variant="large" position="top-left" colorScheme="secondary" />
+          <GradientBlob variant="medium" position="bottom-right" colorScheme="accent" />
+        </div>
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <Reveal>
               <h2 className="text-3xl md:text-4xl mb-6">
