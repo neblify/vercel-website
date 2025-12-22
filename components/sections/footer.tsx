@@ -43,7 +43,7 @@ export function Footer() {
                 alt="Neblify Logo"
                 width={180}
                 height={60}
-                className="h-10 w-auto"
+                className="h-auto w-full max-w-[180px] aspect-[3/1] object-contain"
               />
             </Link>
             <p className="text-sm text-muted-foreground mb-6">
