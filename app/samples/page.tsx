@@ -1,41 +1,37 @@
 'use client';
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Code, Bot, Sparkles, Cpu } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations';
 import { HeroBackground, SectionDivider, GradientBlob } from '@/components/decorations';
 
 export default function SamplesPage() {
-  const samples = [
+  const videos = [
     {
-      icon: Sparkles,
-      title: 'Generative AI Sample',
-      description: 'Explore our generative AI implementations including ChatGPT integrations, custom GPT applications, and RAG systems.',
-      category: 'Generative AI',
-      tags: ['GPT', 'LLM', 'RAG'],
+      title: 'Generative AI Implementation',
+      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video URL
     },
     {
-      icon: Bot,
-      title: 'AI Integration Sample',
-      description: 'See how we integrate AI capabilities into existing systems with seamless API connections and workflow automation.',
-      category: 'AI Integration',
-      tags: ['API', 'Automation', 'Integration'],
+      title: 'AI Integration Services',
+      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video URL
     },
     {
-      icon: Code,
-      title: 'Custom Model Sample',
-      description: 'Discover custom AI models we\'ve developed for computer vision, NLP, and predictive analytics use cases.',
-      category: 'Custom AI',
-      tags: ['Computer Vision', 'NLP', 'ML'],
+      title: 'Custom AI Model Development',
+      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video URL
     },
     {
-      icon: Cpu,
-      title: 'MLOps Pipeline Sample',
-      description: 'Review our MLOps implementations featuring CI/CD pipelines, model monitoring, and deployment strategies.',
-      category: 'MLOps',
-      tags: ['CI/CD', 'Monitoring', 'Deployment'],
+      title: 'MLOps Pipeline Overview',
+      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video URL
+    },
+    {
+      title: 'Cloud Optimization Strategies',
+      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video URL
+    },
+    {
+      title: 'DevOps Best Practices',
+      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video URL
     },
   ];
 
@@ -52,7 +48,7 @@ export default function SamplesPage() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="text-xl text-muted-foreground font-light">
-                Explore our portfolio of AI and cloud solutions. See real examples of our work across various industries and use cases.
+                Watch our video library showcasing AI and cloud solutions. See real examples of our work across various industries and use cases.
               </p>
             </Reveal>
           </div>
@@ -62,48 +58,30 @@ export default function SamplesPage() {
       {/* Section Divider */}
       <SectionDivider variant="circuit" colorScheme="primary" />
 
-      {/* Samples Grid */}
+      {/* Video Library Grid */}
       <section className="section-spacing">
         <div className="container">
-          <StaggerContainer className="grid md:grid-cols-2 gap-8">
-            {samples.map((sample, index) => {
-              const Icon = sample.icon;
-              return (
-                <StaggerItem key={index}>
-                  <Card className="h-full">
-                    <CardHeader>
-                      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                        <Icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {sample.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <CardTitle className="text-2xl mb-2 font-medium">{sample.title}</CardTitle>
-                      <CardDescription className="text-base font-light">
-                        {sample.category}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground mb-6 font-light">
-                        {sample.description}
-                      </p>
-                      <Link href="/contact">
-                        <Button variant="ghostPrimary" className="w-full">
-                          Request Access <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                      </Link>
-                    </CardContent>
-                  </Card>
-                </StaggerItem>
-              );
-            })}
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {videos.map((video, index) => (
+              <StaggerItem key={index}>
+                <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow">
+                  <div className="aspect-video relative bg-muted">
+                    <iframe
+                      src={video.videoUrl}
+                      title={video.title}
+                      className="absolute inset-0 w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-lg font-medium line-clamp-2">
+                      {video.title}
+                    </CardTitle>
+                  </CardHeader>
+                </Card>
+              </StaggerItem>
+            ))}
           </StaggerContainer>
         </div>
       </section>
