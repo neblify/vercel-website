@@ -66,13 +66,22 @@ export default function SamplesPage() {
               <StaggerItem key={index}>
                 <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow">
                   <div className="aspect-video relative bg-muted">
-                    <iframe
-                      src={video.videoUrl}
-                      title={video.title}
-                      className="absolute inset-0 w-full h-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
+                    {video.title === 'Generative AI Implementation' ? (
+                      <iframe
+                        src={video.videoUrl}
+                        title={video.title}
+                        className="absolute inset-0 w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gradient-to-br from-muted to-muted/50">
+                        <div className="text-center">
+                          <div className="text-4xl font-bold text-muted-foreground mb-2">Coming Soon</div>
+                          <div className="text-sm text-muted-foreground/70">Video content will be available shortly</div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                   <CardHeader>
                     <CardTitle className="text-lg font-medium line-clamp-2">
