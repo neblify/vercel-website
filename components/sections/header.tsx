@@ -31,6 +31,7 @@ export function Header() {
         { name: 'Custom AI Model Development', href: '/solutions/custom-ai-models' },
         { name: 'MLOps & Model Deployment', href: '/solutions/mlops' },
         { name: 'AI Strategy & Transformation', href: '/solutions/ai-strategy' },
+        { name: 'Samples', href: '/samples' },
       ],
     },
     { name: 'Case Studies', href: '/case-studies' },
