@@ -11,7 +11,7 @@ export default function SamplesPage() {
   const videos = [
     {
       title: 'Generative AI Implementation',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video URL
+      videoUrl: 'https://www.youtube.com/embed/VDv-ljaTMmM',
     },
     {
       title: 'AI Integration Services',
