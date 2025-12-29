@@ -66,7 +66,7 @@ export function Header() {
               </Link>
               {item.submenu && (
                 <div className="absolute left-0 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 bg-background border rounded-md shadow-lg">
-                  <div className="py-2">
+                  <div className="py-2 bg-white border border-white shadow-[0px_4px_12px_0px_rgba(0,0,0,0.15)]" style={{ borderImage: 'none' }}>
                     {item.submenu.map((subitem) => (
                       <Link
                         key={subitem.name}
