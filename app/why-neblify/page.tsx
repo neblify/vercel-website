@@ -22,6 +22,7 @@ import {
   BarChart3
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations';
 import { HeroBackground, SectionBackground, SectionDivider, GradientBlob } from '@/components/decorations';
 
@@ -156,17 +157,30 @@ export default function WhyNeblifyPage() {
       {/* Hero Section */}
       <HeroBackground variant="default" className="section-spacing overflow-hidden">
         <div className="container relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <Reveal>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
-                Why Choose Neblify?
-              </h1>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="text-xl text-muted-foreground font-light">
-                We transform AI ambitions into operational reality. Our proven approach helps organizations 
-                overcome implementation barriers and achieve sustainable AI success.
-              </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-2xl">
+              <Reveal>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
+                  Why Choose Neblify?
+                </h1>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="text-xl text-muted-foreground font-light">
+                  We transform AI ambitions into operational reality. Our proven approach helps organizations 
+                  overcome implementation barriers and achieve sustainable AI success.
+                </p>
+              </Reveal>
+            </div>
+            <Reveal delay={0.2} direction="right">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-border/50">
+                <Image
+                  src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop"
+                  alt="AI Technology and Innovation"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </Reveal>
           </div>
         </div>
@@ -216,15 +230,27 @@ export default function WhyNeblifyPage() {
       {/* Solutions Section */}
       <SectionBackground variant="tech" className="section-spacing bg-muted/30">
         <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             <Reveal>
-              <h2 className="text-3xl md:text-4xl mb-4">How Neblify Addresses These Challenges</h2>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-border/50">
+                <Image
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop"
+                  alt="Team Collaboration and AI Implementation"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </Reveal>
-            <Reveal delay={0.1}>
-              <p className="text-lg text-muted-foreground font-light">
-                Our comprehensive approach ensures your AI initiatives deliver real, measurable value
-              </p>
-            </Reveal>
+            <div>
+              <Reveal>
+                <h2 className="text-3xl md:text-4xl mb-4">How Neblify Addresses These Challenges</h2>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="text-lg text-muted-foreground font-light mb-8">
+                  Our comprehensive approach ensures your AI initiatives deliver real, measurable value
+                </p>
+              </Reveal>
+            </div>
           </div>
 
           <StaggerContainer className="grid md:grid-cols-2 gap-8">
@@ -262,6 +288,19 @@ export default function WhyNeblifyPage() {
               <p className="text-lg text-muted-foreground font-light">
                 Structured services designed to guide you through every stage of your AI journey
               </p>
+            </Reveal>
+          </div>
+
+          <div className="mb-12">
+            <Reveal>
+              <div className="relative aspect-[16/6] rounded-2xl overflow-hidden shadow-xl border border-border/50">
+                <Image
+                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop"
+                  alt="AI Development and Technology Services"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </Reveal>
           </div>
 
@@ -331,35 +370,47 @@ export default function WhyNeblifyPage() {
       {/* Methodology Section */}
       <section className="section-spacing">
         <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-16">
-              <Reveal>
-                <h2 className="text-3xl md:text-4xl mb-4">Our Execution Methodology</h2>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <p className="text-lg text-muted-foreground font-light">
-                  A disciplined, proven approach that transforms AI concepts into operational excellence
-                </p>
-              </Reveal>
-            </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <div className="text-center mb-12 lg:text-left">
+                <Reveal>
+                  <h2 className="text-3xl md:text-4xl mb-4">Our Execution Methodology</h2>
+                </Reveal>
+                <Reveal delay={0.1}>
+                  <p className="text-lg text-muted-foreground font-light">
+                    A disciplined, proven approach that transforms AI concepts into operational excellence
+                  </p>
+                </Reveal>
+              </div>
 
-            <div className="space-y-8">
-              {methodology.map((item, index) => (
-                <Reveal key={index} delay={index * 0.1} direction="left">
-                  <div className="flex gap-6 items-start">
-                    <div className="flex-shrink-0">
-                      <div className="h-16 w-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-serif text-lg">
-                        {item.step}
+              <div className="space-y-8">
+                {methodology.map((item, index) => (
+                  <Reveal key={index} delay={index * 0.1} direction="left">
+                    <div className="flex gap-6 items-start">
+                      <div className="flex-shrink-0">
+                        <div className="h-16 w-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-serif text-lg">
+                          {item.step}
+                        </div>
+                      </div>
+                      <div className="flex-grow pt-2">
+                        <h3 className="text-xl font-medium mb-2">{item.title}</h3>
+                        <p className="text-muted-foreground font-light">{item.description}</p>
                       </div>
                     </div>
-                    <div className="flex-grow pt-2">
-                      <h3 className="text-xl font-medium mb-2">{item.title}</h3>
-                      <p className="text-muted-foreground font-light">{item.description}</p>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
+                  </Reveal>
+                ))}
+              </div>
             </div>
+            <Reveal delay={0.3} direction="right">
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-xl border border-border/50 lg:sticky lg:top-24">
+                <Image
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop"
+                  alt="AI Process and Workflow Visualization"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -370,9 +421,9 @@ export default function WhyNeblifyPage() {
       {/* Platform Section */}
       <SectionBackground variant="tech" className="section-spacing bg-muted/30">
         <div className="container">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <Reveal>
-              <div className="text-center mb-8">
+              <div className="text-center mb-12">
                 <div className="inline-flex items-center px-4 py-2 rounded-full border border-border/50 bg-background/50 backdrop-blur-sm mb-6">
                   <Briefcase className="h-4 w-4 mr-2 text-primary" />
                   <span className="text-sm font-medium">Proprietary Platform</span>
@@ -381,7 +432,7 @@ export default function WhyNeblifyPage() {
               </div>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="text-lg text-muted-foreground text-center font-light mb-8">
+              <p className="text-lg text-muted-foreground text-center font-light mb-12 max-w-3xl mx-auto">
                 Neblify's proprietary platform simplifies the development and management of AI agents 
                 across multiple channels. Our technology enables you to operationalize AI solutions 
                 without increasing complexity, providing a unified framework for building, deploying, 
@@ -389,6 +440,16 @@ export default function WhyNeblifyPage() {
               </p>
             </Reveal>
             <Reveal delay={0.2}>
+              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl border border-border/50 mb-12">
+                <Image
+                  src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop"
+                  alt="AI Platform Dashboard and Interface"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={0.3}>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="flex items-start space-x-3 p-4 rounded-xl border border-border/50 bg-card">
                   <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
