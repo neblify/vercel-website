@@ -22,6 +22,7 @@ export function Header() {
         { name: 'Careers', href: '/about/careers' },
       ],
     },
+    { name: 'Why Neblify', href: '/why-neblify' },
     {
       name: 'Solutions',
       href: '/solutions',
