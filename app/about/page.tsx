@@ -5,8 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Target, Users, Clock, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Reveal, StaggerContainer, StaggerItem } from '@/components/animations';
-import { AvatarPlaceholder } from '@/components/ui/avatar-placeholder';
-import { HeroBackground, SectionBackground, SectionDivider, GradientBlob } from '@/components/decorations';
+import { HeroBackground, GradientBlob } from '@/components/decorations';
 
 export default function AboutPage() {
   const values = [
@@ -24,50 +23,6 @@ export default function AboutPage() {
       icon: Clock,
       title: 'Timely Delivery',
       description: 'We respect deadlines and deliver projects on time without compromising on quality.'
-    },
-  ];
-
-  const team = [
-    {
-      name: 'Leadership Team Member 1',
-      initials: 'LM',
-      role: 'CEO & Founder',
-      bio: 'Veteran technology leader with 15+ years of experience in AI and cloud computing.'
-    },
-    {
-      name: 'Leadership Team Member 2',
-      initials: 'LM',
-      role: 'CTO',
-      bio: 'Experienced technologist specializing in ML/AI infrastructure. Previously led engineering teams at major tech companies.'
-    },
-    {
-      name: 'Leadership Team Member 3',
-      initials: 'LM',
-      role: 'Head of AI Solutions',
-      bio: 'PhD in Machine Learning. Expert in deploying enterprise-scale AI solutions across various industries.'
-    },
-  ];
-
-  const milestones = [
-    {
-      year: '2014',
-      title: 'Foundation',
-      description: 'Neblify was founded with a vision to bridge the gap between cutting-edge AI research and practical business applications.'
-    },
-    {
-      year: '2017',
-      title: 'Expansion',
-      description: 'Expanded our services to include cloud optimization and DevOps, helping clients scale efficiently.'
-    },
-    {
-      year: '2020',
-      title: 'AI Innovation',
-      description: 'Launched our Generative AI consulting practice, becoming early adopters and experts in the field.'
-    },
-    {
-      year: '2024',
-      title: 'Global Recognition',
-      description: 'Recognized as a leading AI solutions provider, serving clients across multiple industries worldwide.'
     },
   ];
 
@@ -160,82 +115,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Section Divider */}
-      <SectionDivider variant="wave" colorScheme="primary" />
-
-      {/* Leadership Team */}
-      <SectionBackground variant="tech" className="section-spacing bg-muted/30">
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <Reveal>
-              <h2 className="text-3xl md:text-4xl mb-4">Leadership Team</h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="text-lg text-muted-foreground font-light">
-                Meet the experts driving innovation at Neblify
-              </p>
-            </Reveal>
-          </div>
-
-          <StaggerContainer className="grid md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <StaggerItem key={index}>
-                <Card className="h-full">
-                  <CardHeader>
-                    <div className="flex justify-center mb-4">
-                      <AvatarPlaceholder size="lg" initials={member.initials} />
-                    </div>
-                    <CardTitle className="text-center font-medium">{member.name}</CardTitle>
-                    <CardDescription className="text-center font-medium text-primary">{member.role}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground text-center font-light">{member.bio}</p>
-                  </CardContent>
-                </Card>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </SectionBackground>
-
-      {/* Section Divider */}
-      <SectionDivider variant="dots" colorScheme="primary" />
-
-      {/* Company History */}
-      <section id="history" className="section-spacing">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-16">
-              <Reveal>
-                <h2 className="text-3xl md:text-4xl mb-4">Our Journey</h2>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <p className="text-lg text-muted-foreground font-light">
-                  A decade of innovation and growth
-                </p>
-              </Reveal>
-            </div>
-
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <Reveal key={index} delay={index * 0.1} direction="left">
-                  <div className="flex gap-8">
-                    <div className="flex-shrink-0">
-                      <div className="h-16 w-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-serif text-lg">
-                        {milestone.year}
-                      </div>
-                    </div>
-                    <div className="flex-grow pt-2">
-                      <h3 className="text-xl font-medium mb-2">{milestone.title}</h3>
-                      <p className="text-muted-foreground font-light">{milestone.description}</p>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="relative section-spacing bg-primary text-primary-foreground overflow-hidden">
