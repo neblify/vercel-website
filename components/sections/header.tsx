@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { MusicPlayer } from '@/components/audio/music-player';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -86,6 +87,9 @@ export function Header() {
 
         {/* CTA and Mobile Menu */}
         <div className="flex items-center space-x-4">
+          <div className="hidden md:block">
+            <MusicPlayer />
+          </div>
           <Link href="/contact">
             <Button className="hidden md:inline-flex">Contact Us</Button>
           </Link>
@@ -129,9 +133,14 @@ export function Header() {
                 )}
               </div>
             ))}
-            <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-              <Button className="w-full">Contact Us</Button>
-            </Link>
+            <div className="flex items-center gap-4 pt-2">
+              <div className="md:hidden">
+                <MusicPlayer />
+              </div>
+              <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="flex-1">
+                <Button className="w-full">Contact Us</Button>
+              </Link>
+            </div>
           </div>
         </div>
       )}
